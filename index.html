@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ação Racial - Preconceitos e Estereótipos na Mídia e Sociedade</title>
+    <link rel="icon" type="image/png" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgFsff0LH3FppGSmR6uaHMA6Usovo479UDY6ZYzDBpBm24GwgEIq9hnzdIwK3Nj6UMO-Kz1V34SbFmOIqa2URYzW8zYH7IPTkshaN97k7hSSHMp9-sf27Lwm7efe8q_5Gu0DWuJdCgNgbisoP6Z3JlxZXdLwv6WZIotvxmsG6fT6qQo4UYMZAma9Q0U4T0/s1600/C%C3%B3pia_de_PROJETO_STEAM-S-removebg-preview%20%281%29.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variáveis CSS para cores e temas */
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
+            --accent-blue: #1e3a8a;
+            --accent-light: #3b82f6;
+            --card-bg: #252525;
+            --shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            --transition: all 0.3s ease;
+        }
+
+        .light-theme {
+            --bg-primary: #f5f5f5;
+            --bg-secondary: #e0e0e0;
+            --text-primary: #0a0a0a;
+            --text-secondary: #333333;
+            --accent-blue: #1e3a8a;
+            --accent-light: #3b82f6;
+            --card-bg: #ffffff;
+            --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: var(--transition);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Cabeçalho */
+        header {
+            background-color: var(--bg-secondary);
+            padding: 15px 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            margin-right: 12px;
+            border-radius: 6px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo img:hover {
+            transform: scale(1.05);
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            background: linear-gradient(45deg, var(--accent-light), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: var(--text-primary);
+        }
+
+        /* Navegação */
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav li {
+            margin-left: 20px;
+            position: relative;
+        }
+
+        nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 8px 12px;
+            border-radius: 6px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        nav a:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-light);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover:before {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: var(--accent-light);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-btn:hover {
+            color: var(--accent-light);
+        }
+
+        /* Conteúdo principal */
+        main {
+            min-height: calc(100vh - 180px);
+            padding: 40px 0;
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        .page {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .page.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--accent-light);
+            font-size: 2.5rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .page-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-light));
+            border-radius: 3px;
+        }
+
+        /* Cards de conteúdo */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(30, 58, 138, 0.2));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .card:hover:before {
+            opacity: 1;
+        }
+
+        .card-img {
+            height: 180px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3.5rem;
+            transition: var(--transition);
+        }
+
+        .card:hover .card-img {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 25px;
+            position: relative;
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            color: var(--accent-light);
+            font-size: 1.4rem;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-light));
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn:hover:before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(30, 58, 138, 0.3);
+        }
+
+        /* Listas de recursos */
+        .resource-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .resource-list li {
+            padding: 15px;
+            margin-bottom: 12px;
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+            border-left: 4px solid var(--accent-light);
+        }
+
+        .resource-list li:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow);
+        }
+
+        .resource-list li i {
+            margin-right: 15px;
+            font-size: 1.2rem;
+            color: var(--accent-light);
+        }
+
+        .resource-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .resource-link:hover {
+            color: var(--accent-light);
+        }
+
+        /* Modo escuro/claro */
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            cursor: pointer;
+            font-size: 1.3rem;
+            margin-left: 20px;
+            transition: var(--transition);
+            padding: 8px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .theme-toggle:hover {
+            color: var(--accent-light);
+            transform: rotate(15deg);
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Loading spinner */
+        .loader {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(10, 10, 10, 0.8);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loader.spinning {
+            display: flex;
+        }
+
+        .loader-icon {
+            width: 60px;
+            height: 60px;
+            border: 5px solid rgba(59, 130, 246, 0.3);
+            border-radius: 50%;
+            border-top: 5px solid var(--accent-light);
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Scroll to top button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-light));
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+            z-index: 999;
+        }
+
+        .scroll-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: var(--bg-secondary);
+            padding: 40px 0 20px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .footer-logo {
+            margin-bottom: 25px;
+        }
+
+        .footer-logo img {
+            height: 70px;
+            margin-bottom: 15px;
+            transition: var(--transition);
+        }
+
+        .footer-logo img:hover {
+            transform: scale(1.05);
+        }
+
+        .footer-logo p {
+            color: var(--text-secondary);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .footer-links {
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            margin: 0 15px;
+            text-decoration: none;
+            transition: var(--transition);
+            padding: 8px 0;
+            position: relative;
+        }
+
+        .footer-links a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-light);
+            transition: width 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-light);
+        }
+
+        .footer-links a:hover:after {
+            width: 100%;
+        }
+
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Página inicial */
+        .hero {
+            text-align: center;
+            padding: 60px 0;
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-primary));
+            border-radius: 12px;
+            margin-bottom: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" opacity="0.05"><circle cx="50" cy="50" r="40" stroke="%233b82f6" stroke-width="2" fill="none" /></svg>');
+            background-size: 200px;
+            opacity: 0.3;
+        }
+
+        .hero h2 {
+            font-size: 2.8rem;
+            margin-bottom: 25px;
+            background: linear-gradient(45deg, var(--accent-light), var(--text-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            max-width: 800px;
+            margin: 0 auto 35px;
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Páginas de conteúdo */
+        .content-page {
+            background-color: var(--card-bg);
+            padding: 35px;
+            border-radius: 12px;
+            margin-top: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .content-page:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Barra de progresso de leitura */
+        .reading-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-light));
+            z-index: 1000;
+            transition: width 0.2s ease;
+        }
+
+        /* Efeito de digitação para títulos */
+        .typewriter {
+            overflow: hidden;
+            border-right: 3px solid var(--accent-light);
+            white-space: nowrap;
+            margin: 0 auto;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--accent-light) }
+        }
+
+        /* Destaques */
+        .highlight-box {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-left: 4px solid var(--accent-light);
+            margin: 1.5rem 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .media-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .example-card {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .example-card h4 {
+            color: var(--accent-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .solution-item {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .solution-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .solution-icon {
+            font-size: 2.5rem;
+            color: var(--accent-light);
+            margin-bottom: 1rem;
+        }
+
+        /* Responsividade */
+        @media (max-width: 1024px) {
+            .card-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 20px;
+            }
+            
+            .hero h2 {
+                font-size: 2.4rem;
+            }
+            
+            .page-title {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .logo {
+                margin-bottom: 15px;
+            }
+
+            .logo h1 {
+                font-size: 1.6rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav li {
+                margin: 8px 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                top: 15px;
+                right: 15px;
+            }
+
+            nav {
+                display: none;
+                width: 100%;
+                margin-top: 15px;
+            }
+
+            nav.show {
+                display: block;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero {
+                padding: 40px 20px;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .page-title {
+                font-size: 1.8rem;
+            }
+            
+            .theme-toggle {
+                margin: 15px 0 0 0;
+            }
+            
+            .footer-links a {
+                margin: 10px;
+            }
+            
+            .content-page {
+                padding: 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .logo img {
+                height: 35px;
+            }
+            
+            .logo h1 {
+                font-size: 1.4rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .page-title {
+                font-size: 1.6rem;
+            }
+            
+            .card-img {
+                height: 160px;
+                font-size: 3rem;
+            }
+            
+            .scroll-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loader" id="loader">
+        <div class="loader-icon"></div>
+    </div>
+
+    <div class="reading-progress" id="reading-progress"></div>
+
+    <button class="scroll-to-top" id="scrollToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgFsff0LH3FppGSmR6uaHMA6Usovo479UDY6ZYzDBpBm24GwgEIq9hnzdIwK3Nj6UMO-Kz1V34SbFmOIqa2URYzW8zYH7IPTkshaN97k7hSSHMp9-sf27Lwm7efe8q_5Gu0DWuJdCgNgbisoP6Z3JlxZXdLwv6WZIotvxmsG6fT6qQo4UYMZAma9Q0U4T0/s1600/C%C3%B3pia_de_PROJETO_STEAM-S-removebg-preview%20%281%29.png" alt="Ação Racial">
+                    <h1>Ação <span>Racial</span></h1>
+                </div>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <nav id="main-nav">
+                    <ul>
+                        <li><a href="#" data-page="home">Início</a></li>
+                        <li><a href="#" data-page="introducao">Introdução</a></li>
+                        <li><a href="#" data-page="estereotipos">Estereótipos na Mídia</a></li>
+                        <li><a href="#" data-page="impactos">Impactos Sociais</a></li>
+                        <li><a href="#" data-page="solucoes">Soluções</a></li>
+                        <li><a href="#" data-page="conclusao">Conclusão</a></li>
+                    </ul>
+                </nav>
+                <button class="theme-toggle" aria-label="Alternar modo claro/escuro">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Página Inicial -->
+            <section id="home" class="page active">
+                <div class="hero">
+                    <h2 class="typewriter">Ação Racial</h2>
+                    <p>Preconceitos e Estereótipos Reforçados pela Mídia e pela Sociedade</p>
+                    <a href="#" class="btn" data-page="introducao">Explorar Conteúdo</a>
+                </div>
+
+                <h2 class="page-title">Destaques</h2>
+                
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-img">
+                            <i class="fas fa-tv"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Estereótipos na Mídia</h3>
+                            <p>Análise crítica sobre como a mídia perpetua representações simplificadas de grupos raciais.</p>
+                            <a href="#" class="btn" data-page="estereotipos">Saiba Mais</a>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-img">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Impactos Sociais</h3>
+                            <p>Consequências reais dos estereótipos raciais na vida das pessoas e na sociedade.</p>
+                            <a href="#" class="btn" data-page="impactos">Explorar</a>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-img">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Soluções e Alternativas</h3>
+                            <p>Estratégias para combater estereótipos e promover representação equitativa.</p>
+                            <a href="#" class="btn" data-page="solucoes">Conhecer</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Introdução -->
+            <section id="introducao" class="page">
+                <h2 class="page-title">Introdução</h2>
+                
+                <div class="content-page">
+                    <p>Os meios de comunicação e a sociedade desempenham papéis fundamentais na formação de percepções sobre diferentes grupos raciais e étnicos. Este projeto busca analisar criticamente como estereótipos e preconceitos são perpetuados através desses canais, sem adotar uma abordagem vitimista, mas sim focando na compreensão dos mecanismos envolvidos e nas possibilidades de transformação.</p>
+                    
+                    <div class="highlight-box">
+                        <p>O objetivo deste trabalho é promover uma reflexão consciente sobre como representações midiáticas e práticas sociais podem reforçar visões distorcidas sobre grupos raciais, e como podemos construir alternativas mais equitativas e representativas.</p>
+                    </div>
+                    
+                    <p>A análise apresentada busca equilibrar a crítica construtiva com propostas práticas, reconhecendo a complexidade do tema e a necessidade de diálogo aberto e informado.</p>
+                    
+                    <h3>Abordagem Equilibrada</h3>
+                    <p>Este projeto diferencia-se por abordar o tema sem vitimização, focando em:</p>
+                    <ul>
+                        <li>Análise crítica dos mecanismos de perpetuação de estereótipos</li>
+                        <li>Reconhecimento da responsabilidade coletiva na transformação social</li>
+                        <li>Propostas construtivas para mudança de paradigmas</li>
+                        <li>Valorização do diálogo informado e respeitoso</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Estereótipos na Mídia -->
+            <section id="estereotipos" class="page">
+                <h2 class="page-title">Estereótipos Raciais na Mídia</h2>
+                
+                <div class="content-page">
+                    <p>A mídia, como principal formadora de opinião na sociedade contemporânea, tem o poder de reforçar ou desafiar estereótipos raciais. Infelizmente, muitas vezes opta por representações simplificadas que perpetuam visões preconceituosas.</p>
+                    
+                    <h3>Padrões de Representação Problemáticos</h3>
+                    <ul>
+                        <li><strong>Sub-representação:</strong> Grupos raciais minoritários frequentemente aparecem menos na mídia do que sua proporção na população real.</li>
+                        <li><strong>Representação estereotipada:</strong> Quando presentes, personagens de grupos minoritários muitas vezes são retratados com base em estereótipos limitantes.</li>
+                        <li><strong>Papéis secundários:</strong> Personagens não-brancos frequentemente ocupam posições coadjuvantes, sem desenvolvimento profundo.</li>
+                        <li><strong>Falta de diversidade intragrupal:</strong> A mídia tende a tratar grupos raciais como monolíticos, ignorando sua diversidade interna.</li>
+                    </ul>
+                    
+                    <h3>Exemplos Concretos</h3>
+                    <div class="media-examples">
+                        <div class="example-card">
+                            <h4>Publicidade e Beleza</h4>
+                            <p>Padrões de beleza eurocêntricos ainda dominam as campanhas publicitárias, marginalizando características físicas associadas a outros grupos raciais.</p>
+                        </div>
+                        <div class="example-card">
+                            <h4>Jornalismo e Criminalidade</h4>
+                            <p>Notícias sobre criminalidade frequentemente associam determinados grupos raciais a atividades ilegais, reforçando estereótipos negativos.</p>
+                        </div>
+                        <div class="example-card">
+                            <h4>Entretenimento e Humor</h4>
+                            <p>Piadas e situações cômicas que se baseiam em estereótipos raciais perpetuam visões simplistas e prejudiciais.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="highlight-box">
+                        <p>A mídia não apenas reflete a sociedade, mas também a constrói. Suas representações têm o poder de moldar percepções, atitudes e comportamentos em relação a diferentes grupos raciais.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Impactos Sociais -->
+            <section id="impactos" class="page">
+                <h2 class="page-title">Impactos Sociais dos Estereótipos</h2>
+                
+                <div class="content-page">
+                    <p>Os estereótipos raciais reforçados pela mídia e sociedade têm consequências reais e mensuráveis na vida das pessoas, afetando desde oportunidades individuais até dinâmicas sociais mais amplas.</p>
+                    
+                    <h3>Efeitos Psicológicos e Identitários</h3>
+                    <p>A exposição constante a representações negativas ou limitadas pode afetar a autoestima e a formação identitária de membros de grupos estereotipados. Simultaneamente, contribui para a formação de vieses implícitos na população em geral.</p>
+                    
+                    <h3>Desigualdades Estruturais</h3>
+                    <p>Estereótipos midiáticos frequentemente refletem e reforçam desigualdades existentes na sociedade, influenciando:</p>
+                    <ul>
+                        <li>Oportunidades de emprego e avanço profissional</li>
+                        <li>Acesso a educação de qualidade</li>
+                        <li>Tratamento no sistema de justiça</li>
+                        <li>Acesso a serviços de saúde</li>
+                    </ul>
+                    
+                    <div class="highlight-box">
+                        <p>É importante notar que o problema não reside apenas na representação negativa, mas também na ausência de representação diversificada e autêntica que reflita a complexidade e pluralidade das experiências raciais.</p>
+                    </div>
+                    
+                    <h3>Ciclo de Perpetuação</h3>
+                    <p>Os estereótipos criam um ciclo autoperpetuante: as representações midiáticas influenciam percepções sociais, que por sua vez afetam oportunidades reais, confirmando assim os estereótipos iniciais.</p>
+                </div>
+            </section>
+
+            <!-- Soluções -->
+            <section id="solucoes" class="page">
+                <h2 class="page-title">Soluções e Alternativas</h2>
+                
+                <div class="content-page">
+                    <p>Combater estereótipos raciais requer ações conscientes e coordenadas em múltiplos níveis - individual, institucional e social.</p>
+                    
+                    <div class="solutions-grid">
+                        <div class="solution-item">
+                            <div class="solution-icon">🎬</div>
+                            <h4>Diversidade nas Produções</h4>
+                            <p>Incluir profissionais diversos em todas as etapas da produção midiática, desde a criação até a distribuição.</p>
+                        </div>
+                        <div class="solution-item">
+                            <div class="solution-icon">📚</div>
+                            <h4>Educação Midíatica</h4>
+                            <p>Desenvolver habilidades críticas para analisar representações raciais na mídia, desde a educação básica.</p>
+                        </div>
+                        <div class="solution-item">
+                            <div class="solution-icon">🗣️</div>
+                            <h4>Amplificação de Vozes</h4>
+                            <p>Criar espaços para que membros de grupos sub-representados contem suas próprias histórias.</p>
+                        </div>
+                        <div class="solution-item">
+                            <div class="solution-icon">⚖️</div>
+                            <h4>Políticas Inclusivas</h4>
+                            <p>Estabelecer diretrizes e metas para representação equitativa em organizações midiáticas.</p>
+                        </div>
+                    </div>
+                    
+                    <h3>Responsabilidade Individual e Coletiva</h3>
+                    <p>Cada pessoa tem um papel a desempenhar na desconstrução de estereótipos raciais:</p>
+                    <ol>
+                        <li>Questionar representações simplistas na mídia que consome</li>
+                        <li>Buscar conteúdo produzido por criadores diversos</li>
+                        <li>Reconhecer e desafiar próprios vieses inconscientes</li>
+                        <li>Promover diálogos construtivos sobre raça e representação</li>
+                    </ol>
+                    
+                    <div class="highlight-box">
+                        <p>A transformação necessária não é apenas sobre substituir representações negativas por positivas, mas sobre criar um ecossistema midiático que valorize a complexidade e diversidade de experiências humanas.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Conclusão -->
+            <section id="conclusao" class="page">
+                <h2 class="page-title">Conclusão</h2>
+                
+                <div class="content-page">
+                    <p>Os estereótipos raciais perpetuados pela mídia e sociedade não são problemas intransponíveis, mas sim desafios que exigem conscientização, ação deliberada e compromisso contínuo com a equidade.</p>
+                    
+                    <p>A transformação necessária vai além da simples substituição de representações negativas por positivas; requer a criação de um ecossistema midiático que valorize a complexidade, a autenticidade e a diversidade de experiências humanas em toda sua riqueza.</p>
+                    
+                    <div class="highlight-box">
+                        <p>O caminho para uma sociedade mais justa e inclusiva passa necessariamente pela reavaliação crítica de como representamos e percebemos as diferenças raciais, tanto na mídia quanto em nossas interações cotidianas.</p>
+                    </div>
+                    
+                    <p>Este projeto convida à reflexão e à ação, reconhecendo que cada avanço, por menor que seja, contribui para a construção de um panorama midiático e social mais representativo e equitativo.</p>
+                    
+                    <h3>Chamado à Ação</h3>
+                    <p>Convidamos todos os setores da sociedade - mídia, educação, empresas e indivíduos - a se engajarem ativamente na desconstrução de estereótipos raciais e na construção de representações mais justas e precisas de nossa diversidade humana.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiLZWENOXOoarJ5Pk0xLf9SW9wA6DiIfJ2_cZuekSzW06kRqyOszqKNiMBkVtBSMnD4m_YJU_m9oaMpqM8gbmbkErxr9D40KBDlDQb0_YK078SyGEFbXXTI7QdDmxBwjp5ADQ2jpcZGweZzEmE3aVYC0-qBSAf4-mb1GXYvYYBS2gALoSYkWZOdWEI8TZM/s1600/%CE%94.D%CE%A3LTA%20Code.png" alt="Delta Code Brasil Logo">
+                <p>∆.DΣLTA CODE BRASIL</p>
+            </div>
+            <div class="footer-links">
+                <a href="#" data-page="home">Início</a>
+                <a href="#" data-page="introducao">Introdução</a>
+                <a href="#" data-page="conclusao">Conclusão</a>
+            </div>
+            <p class="copyright">© 2025 Saber & Sabor - Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mostrar loader ao carregar a página
+        window.addEventListener('load', function() {
+            const loader = document.getElementById('loader');
+            setTimeout(function() {
+                loader.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }, 500);
+        });
+
+        // Navegação entre páginas
+        document.querySelectorAll('a[data-page]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetPage = this.getAttribute('data-page');
+                
+                // Esconde todas as páginas
+                document.querySelectorAll('.page').forEach(page => {
+                    page.classList.remove('active');
+                });
+                
+                // Mostra a página alvo
+                document.getElementById(targetPage).classList.add('active');
+                
+                // Fecha o menu mobile se estiver aberto
+                document.getElementById('main-nav').classList.remove('show');
+                
+                // Scroll para o topo
+                window.scrollTo(0, 0);
+            });
+        });
+
+        // Menu mobile
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.getElementById('main-nav').classList.toggle('show');
+        });
+
+        // Modo claro/escuro
+        const themeToggle = document.querySelector('.theme-toggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        // Verifica se há uma preferência salva
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            document.body.classList.add('light-theme');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+        
+        themeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('light-theme');
+            
+            if (document.body.classList.contains('light-theme')) {
+                localStorage.setItem('theme', 'light');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                localStorage.setItem('theme', 'dark');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        });
+
+        // Botão de scroll para o topo
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.style.display = 'flex';
+            } else {
+                scrollToTopBtn.style.display = 'none';
+            }
+            
+            // Atualizar barra de progresso de leitura
+            const winHeight = window.innerHeight;
+            const docHeight = document.documentElement.scrollHeight;
+            const scrollTop = window.pageYOffset;
+            const trackLength = docHeight - winHeight;
+            const progress = Math.floor((scrollTop / trackLength) * 100);
+            if (document.getElementById('reading-progress')) {
+                document.getElementById('reading-progress').style.width = progress + '%';
+            }
+        });
+        
+        if (scrollToTopBtn) {
+            scrollToTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+
+        // Efeito de digitação para o título
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            
+            type();
+        }
+
+        // Iniciar efeito de digitação quando a página carregar
+        window.addEventListener('load', function() {
+            const typewriterElement = document.querySelector('.typewriter');
+            if (typewriterElement) {
+                const originalText = typewriterElement.textContent;
+                typeWriter(typewriterElement, originalText, 100);
+            }
+        });
+    </script>
+</body>
+</html>

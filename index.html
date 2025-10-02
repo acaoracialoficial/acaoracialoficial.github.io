@@ -637,12 +637,13 @@
             margin-bottom: 1rem;
         }
 
-        /* Vídeo Circular do Vimeo */
+        /* Vídeo Circular do Vimeo - CENTRALIZADO E COM ZOOM */
         .video-container {
             display: flex;
             justify-content: center;
             align-items: center;
             margin: 40px 0;
+            width: 100%;
         }
 
         .circular-video {
@@ -663,18 +664,21 @@
 
         .vimeo-wrapper {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            height: 0;
+            width: 100%;
+            height: 100%;
             overflow: hidden;
             border-radius: 50%;
+            transform: scale(1.2); /* ZOOM para eliminar bordas */
+            transform-origin: center center; /* Zoom no centro */
         }
 
         .vimeo-wrapper iframe {
             position: absolute;
-            top: 0;
-            left: 0;
+            top: 50%;
+            left: 50%;
             width: 100%;
             height: 100%;
+            transform: translate(-50%, -50%); /* Centralização perfeita */
             border-radius: 50%;
         }
 
@@ -706,6 +710,10 @@
             .circular-video {
                 width: 350px;
                 height: 350px;
+            }
+            
+            .vimeo-wrapper {
+                transform: scale(1.25); /* Ajuste do zoom para telas menores */
             }
         }
 
@@ -785,6 +793,10 @@
                 width: 300px;
                 height: 300px;
             }
+            
+            .vimeo-wrapper {
+                transform: scale(1.3); /* Mais zoom para telas menores */
+            }
         }
 
         @media (max-width: 480px) {
@@ -825,6 +837,10 @@
                 width: 250px;
                 height: 250px;
                 border-width: 3px;
+            }
+            
+            .vimeo-wrapper {
+                transform: scale(1.35); /* Zoom máximo para mobile */
             }
         }
     </style>
@@ -877,7 +893,7 @@
                     <a href="#" class="btn" data-page="introducao">Explorar Conteúdo</a>
                 </div>
 
-                <!-- Vídeo Circular do Vimeo Adicionado -->
+                <!-- Vídeo Circular do Vimeo - CENTRALIZADO E COM ZOOM -->
                 <div class="video-container">
                     <div class="circular-video">
                         <div class="vimeo-wrapper">
@@ -975,7 +991,7 @@
                     <div class="media-examples">
                         <div class="example-card">
                             <h4>Publicidade e Beleza</h4>
-                            <p>Padrões de beleza eurocêntricos ainda dominam as campanhas publicitárias, marginalizando características físicas associadas a outros grupos raciais.</p>
+                            <p>Padrões de beleza eurocêntricos ainda dominam as campanhas publicitárias, marginalizando características físicas associadas a outros grupos racials.</p>
                         </div>
                         <div class="example-card">
                             <h4>Jornalismo e Criminalidade</h4>
